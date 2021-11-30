@@ -1,0 +1,7 @@
+node_modules
+package-lock.json
+./frontend/node_modules
+yarn.lock
+.env
+
+node_modules
