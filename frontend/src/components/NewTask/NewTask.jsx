@@ -28,9 +28,6 @@ const NewTask = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 
-                <label htmlFor="id">Id</label>
-                <input type="text" id="id" name ="id" value = { data.id || '' } onChange={handleChange}/>
-                
 
                 <label htmlFor="name">name</label>
                 <input type="text" id="name" name ="name" value = { data.name || '' } onChange={handleChange}/>

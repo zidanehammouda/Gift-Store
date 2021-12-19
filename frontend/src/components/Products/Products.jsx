@@ -23,7 +23,8 @@ const Products = () => {
 
     return (
         <div className="Container">
-            { data.length ===0 ? 
+            { 
+            data.length !== 0 ? 
                 <table id="products">
                 <tr>
                     <th>Id</th>
@@ -35,7 +36,7 @@ const Products = () => {
                     <th>Button</th>
                 </tr>
                 
-                {data1.map((element)=> {
+                {data.map((element)=> {
                 return (
                    <tr>
                     <td>{element.id}</td>

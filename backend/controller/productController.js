@@ -41,7 +41,7 @@ const getProductById = async (req,res,next) => {
 const postNewProduct = async (req,res) => {
     try {
         const product = new Product({
-            id : req.body.id,
+            id : Math.floor((Math.random()*9999)),
             name : req.body.name,
             category : req.body.category,
             quantity : req.body.quantity,
