@@ -1,7 +1,10 @@
-import React,{useState,useEffect} from 'react'
 import "./Products.css"
-//const data = require('../assets/dummy_data')
+import React,{useState,useEffect} from 'react'
 import axios from 'axios'
+const data1 = require('../../assets/dummy_data')
+
+
+
 
 
 
@@ -17,9 +20,11 @@ const Products = () => {
     },[]
     )
     
+
     return (
         <div className="Container">
-            <table id="products">
+            { data.length ===0 ? 
+                <table id="products">
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
@@ -30,7 +35,7 @@ const Products = () => {
                     <th>Button</th>
                 </tr>
                 
-                {data.map((element)=> {
+                {data1.map((element)=> {
                 return (
                    <tr>
                     <td>{element.id}</td>
@@ -39,11 +44,21 @@ const Products = () => {
                     <td>{element.category}</td>
                     <td>{element.brand}</td>
                     <td>{element.quantity}</td>
-                    <td><button id="edit_button">Edit</button></td>
+                    <td>
+                        <div className="EditDeleteButtons">
+                        <button class="btn"><i class="fa fa-close"></i></button>
+                        <button class="btn"><i class="fa fa-edit"></i></button>
+                        </div>
+                        
+                    
+                    </td>
                     
                     </tr>
                 )})}
-            </table>
+            </table> 
+            : <h1>You have no product</h1> 
+        }
+        
         </div>
     )
 }

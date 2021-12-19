@@ -31,7 +31,7 @@ router.delete('/:id',getProductById,async (req,res)=>{
 router.put('/:id',getProductById, async (req,res)=>{
     if(req.body.id != null ) {
         res.product.id = req.body.id
-    }
+    } 
     if(req.body.name != null ) {
         res.product.name = req.body.name
     }
