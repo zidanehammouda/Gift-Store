@@ -1,5 +1,6 @@
 const Product = require('../model/Product')
 
+
 const getAllProducts = async (req,res) => {
     try {
         const products = await Product.find({})
@@ -16,7 +17,9 @@ const getAllProducts = async (req,res) => {
 const getProductById = async (req,res,next) => {
     let product
     try {
-        product = await Product.findById(req.params.id)
+        product = await Product.findOne({
+            id : req.params.id
+        })
         
 
     } catch (error) {
@@ -41,7 +44,7 @@ const getProductById = async (req,res,next) => {
 const postNewProduct = async (req,res) => {
     try {
         const product = new Product({
-            id : Math.floor((Math.random()*9999)),
+            id : Math.floor((Math.random()*9999)), 
             name : req.body.name,
             category : req.body.category,
             quantity : req.body.quantity,

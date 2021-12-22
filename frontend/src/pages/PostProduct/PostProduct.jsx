@@ -4,7 +4,7 @@ import('./PostProduct.css')
 
 const PostProduct = () => {
     return (
-        <div>
+        <div className="PostProduct">
             <NewTask/>   
         </div>
     )

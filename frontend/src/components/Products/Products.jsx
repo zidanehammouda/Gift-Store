@@ -1,7 +1,7 @@
 import "./Products.css"
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-const data1 = require('../../assets/dummy_data')
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,12 +17,21 @@ const Products = () => {
             .then(response => {
                 console.log(response.data)
                 setData(response.data)})
-    },[]
+    }
     )
     
+    const handleClickDelete = async (target)=> {
+
+        console.log('target.value = ',target)
+       await axios.delete(`http://localhost:8000/api/products/${target}`)
+            .then(console.log('Succesfuly deleted product'))
+            .then(window.location.reload(true))
+            .catch(error => console.log(error))
+
+    }
 
     return (
-        <div className="Container">
+        <div className="Products">
             { 
             data.length !== 0 ? 
                 <table id="products">
@@ -38,6 +47,7 @@ const Products = () => {
                 
                 {data.map((element)=> {
                 return (
+                   
                    <tr>
                     <td>{element.id}</td>
                     <td>{element.name}</td>
@@ -47,10 +57,11 @@ const Products = () => {
                     <td>{element.quantity}</td>
                     <td>
                         <div className="EditDeleteButtons">
-                        <button class="btn"><i class="fa fa-close"></i></button>
-                        <button class="btn"><i class="fa fa-edit"></i></button>
+                        <Link to='/edit' state={{product: element}}>
+                        <button class="btn"><i class="fa fa-edit"></i></button>   
+                        </Link>
+                        <button class="btn" onClick={() => handleClickDelete(element.id)}><i class="fa fa-close"></i></button>
                         </div>
-                        
                     
                     </td>
                     
