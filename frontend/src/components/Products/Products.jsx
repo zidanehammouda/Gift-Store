@@ -2,6 +2,7 @@ import "./Products.css"
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import AddButton from "../AddButton/AddButton";
 
 
 
@@ -17,7 +18,7 @@ const Products = () => {
             .then(response => {
                 console.log(response.data)
                 setData(response.data)})
-    }
+    },[]
     )
     
     const handleClickDelete = async (target)=> {
@@ -31,7 +32,9 @@ const Products = () => {
     }
 
     return (
-        <div className="Products">
+        <div className="Main">
+            <AddButton/>
+            <div className="Products">
             { 
             data.length !== 0 ? 
                 <table id="products">
@@ -71,6 +74,7 @@ const Products = () => {
             : <h1>You have no product</h1> 
         }
         
+        </div>
         </div>
     )
 }

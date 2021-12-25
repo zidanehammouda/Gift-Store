@@ -11,14 +11,10 @@ import { BrowserRouter as Router, Switch, Route, Routes} from "react-router-dom"
 function App() {
   return (
     
-    <Router>
+  <Router>
     <Routes>
-      <Route exact path="/" element={<Home/>}/>
-    </Routes>
-    <Routes>
-      <Route path="/post" element={<PostProduct/>}/>
-    </Routes>
-    <Routes>
+      <Route exact path="/" element={<Products/>}/>
+      <Route path="/post" element={<NewTask/>}/>
       <Route path="/edit" element={<EditProduct/>}/>
     </Routes>
   </Router>

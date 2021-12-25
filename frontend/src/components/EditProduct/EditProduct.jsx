@@ -54,8 +54,8 @@ const EditProduct = () => {
                 <input type="text" id="image" name ="image" value = { data.image || '' } onChange={handleChange} /> 
 
                 <div className="Btn">
-                <input type="submit" value="Update" />
-                <input id="Cancel" type="submit" value="Cancel" />
+                <input type="submit" value="Save" />
+                <Link to="/"><input id="Cancel" type="submit" value="Cancel" /></Link>
                 </div>
                 
             </form>
