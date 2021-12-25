@@ -1,5 +1,5 @@
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom';
@@ -9,8 +9,16 @@ const EditProduct = () => {
     const location = useLocation()
     const {product} = location.state
     const [data,setData] = useState(product)
-    const [Updated,setUpdated] = useState(false)
+    const [categories,setCategories] = useState([])
 
+    useEffect(()=>{
+        const url = 'http://localhost:8000/api/categories'
+        axios(url)
+            .then(response => {
+                console.log(response.data)
+                setCategories(response.data)})
+    },[]
+    )
 
     const handleChange = ({target}) =>{
         const {name,value} = target
@@ -24,7 +32,6 @@ const EditProduct = () => {
         event.preventDefault();
         axios.put(`http://localhost:8000/api/products/${data.id}`,data)
             .then(response => console.log(response))
-            .then(setUpdated(true))
             .catch(error => console.log(error))
 
     }
@@ -42,7 +49,22 @@ const EditProduct = () => {
                 <input type="text" id="name" name ="name" value = { data.name || '' } onChange={handleChange}/>
 
                 <label htmlFor="category">Category</label>
-                <input type="text" id="category" name ="category" value = { data.category || '' } onChange={handleChange}/>
+                <select name="category" id="categories" onChange={handleChange}>
+                    {
+                    categories.map((element)=>
+                    {
+                        if(element.title === data.category) {
+                            return <option selected value={element.title}>{element.title}</option>
+                        }
+                        else {
+                            return <option  value={element.title}>{element.title}</option>
+                        }
+                    }
+                    )
+                    }
+                    
+                </select>
+
 
                 <label htmlFor="quantity">Quantity</label>
                 <input type="text" id="quantity" name ="quantity" value = { data.quantity || '' } onChange={handleChange}/>

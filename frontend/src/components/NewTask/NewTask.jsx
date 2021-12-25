@@ -1,5 +1,5 @@
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ('./NewTask.css')
@@ -7,6 +7,17 @@ import ('./NewTask.css')
 
 const NewTask = () => {
     const [data,setData] = useState({})
+    const [categories,setCategories] = useState([])
+    
+    
+    useEffect(()=>{
+        const url = 'http://localhost:8000/api/categories'
+        axios(url)
+            .then(response => {
+                console.log(response.data)
+                setCategories(response.data)})
+    },[]
+    )
     
     const handleChange = ({target}) =>{
         const {name,value} = target
@@ -38,10 +49,20 @@ const NewTask = () => {
                 <input type="text" id="name" name ="name" value = { data.name || '' } onChange={handleChange}/>
 
                 <label htmlFor="category">Category</label>
-                <input type="text" id="category" name ="category" value = { data.category || '' } onChange={handleChange}/>
+                <select name="category" id="categories" onChange={handleChange}>
+                    {
+                    categories.map((element)=>
+                    {
+                        return(<option value={element.title}>{element.title}</option>)
+                        
+                    }
+                    )
+                    }
+                    
+                </select>
 
                 <label htmlFor="quantity">Quantity</label>
-                <input type="text" id="quantity" name ="quantity" value = { data.quantity || '' } onChange={handleChange}/>
+                <input type="number" id="quantity" name ="quantity" value = { data.quantity || '' } onChange={handleChange}/>
 
                 <label htmlFor="brand">Brand</label>
                 <input type="text" id="brand" name ="brand" value = { data.brand || '' } onChange={handleChange} />

@@ -12,22 +12,26 @@ import AddButton from "../AddButton/AddButton";
 const Products = () => {
     const [data,setData] = useState([])
 
-    useEffect(()=>{
+
+    const fetchData = async () =>{
         const url = 'http://localhost:8000/api/products'
-        axios(url)
+        await axios(url)
             .then(response => {
                 console.log(response.data)
                 setData(response.data)})
+    }
+    
+    useEffect(()=>{
+        fetchData();
     },[]
     )
     
     const handleClickDelete = async (target)=> {
-
-        console.log('target.value = ',target)
-       await axios.delete(`http://localhost:8000/api/products/${target}`)
+        await axios.delete(`http://localhost:8000/api/products/${target}`)
             .then(console.log('Succesfuly deleted product'))
-            .then(window.location.reload(true))
+
             .catch(error => console.log(error))
+        fetchData();
 
     }
 

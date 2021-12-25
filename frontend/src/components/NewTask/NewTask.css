@@ -6,7 +6,7 @@ h3 {
   margin-top: 20px;
 }
 
-input[type=text], select {
+input[type=text],select, input[type=number] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -15,6 +15,7 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
   }
+ 
   
   input[type=submit] {
     width: 100%;

@@ -13,22 +13,39 @@ module.exports = [
       'category': 'Audio',
       'brand': 'JBL',
       'image': 'https://m.media-amazon.com/images/I/71Gk3H-tIqL._AC_SL1500_.jpg',
-      'quantity': 5
+      'quantity': 25
     },
     {
       'id': 4487,
       'name': 'Roku Smart TV',
-      'category': 'Video',
+      'category': 'Electronics',
       'brand': 'Roku',
       'image': 'https://m.media-amazon.com/images/I/71gzlKauNQL._AC_SL1500_.jpg',
-      'quantity': 7
+      'quantity': 10
+    },
+    {
+      'id': 8357,
+      'name': 'JavaScript: The Definitive Guide',
+      'category': 'Books',
+      'brand': 'None',
+      'image': 'https://m.media-amazon.com/images/I/919ZMTHDPBL._AC_UY327_FMwebp_QL65_.jpg',
+      'quantity': 99
     },
     {
       'id': 8357,
       'name': 'Razer Viper Ultimate',
-      'category': 'Accessories',
+      'category': 'Electronics',
       'brand': 'Razer',
       'image': 'https://m.media-amazon.com/images/I/6157EeRHinL._AC_SL1500_.jpg',
       'quantity': 1
-    }
+    },
+    {
+      'id': 4617,
+      'name': 'Women Sneaker',
+      'category': 'Clothing, Shoes and Jewelry',
+      'brand': 'Nergize',
+      'image': 'https://m.media-amazon.com/images/I/71GyzXlZlRL._AC_UL480_FMwebp_QL65_.jpg',
+      'quantity': 140
+    },
+
   ];
