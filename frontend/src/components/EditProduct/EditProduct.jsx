@@ -2,7 +2,8 @@ import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { MDBBtn } from 'mdb-react-ui-kit';
 import ('./EditProduct.css')
 
 const EditProduct = () => {
@@ -10,6 +11,7 @@ const EditProduct = () => {
     const {product} = location.state
     const [data,setData] = useState(product)
     const [categories,setCategories] = useState([])
+    const navigate = useNavigate();
 
     useEffect(()=>{
         const url = 'http://localhost:8000/api/categories'
@@ -33,18 +35,20 @@ const EditProduct = () => {
         axios.put(`http://localhost:8000/api/products/${data.id}`,data)
             .then(response => console.log(response))
             .catch(error => console.log(error))
+            .then(setTimeout(()=>navigate("/"),1000))
 
     }
 
 
     return (
-        <div className="Main">
+        <div className="MainEditProduct">
           <Link to='/'><BsFillArrowLeftCircleFill id="GoBackButton"/></Link>
-            <div className="AddProduct">
-                <h3>{`Updating Product ${data.id}`}</h3>
+            <div className="EditProduct shadow-4">
+                <h1>Updating Product</h1>
             
             <form onSubmit={handleSubmit}>
 
+                <div className="EditProductForm">
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name ="name" value = { data.name || '' } onChange={handleChange}/>
 
@@ -67,18 +71,22 @@ const EditProduct = () => {
 
 
                 <label htmlFor="quantity">Quantity</label>
-                <input type="text" id="quantity" name ="quantity" value = { data.quantity || '' } onChange={handleChange}/>
+                <input type="number" id="quantity" name ="quantity" value = { data.quantity || '' } onChange={handleChange}/>
 
                 <label htmlFor="brand">Brand</label>
                 <input type="text" id="brand" name ="brand" value = { data.brand || '' } onChange={handleChange} />
 
                 <label htmlFor="image">Image</label>
                 <input type="text" id="image" name ="image" value = { data.image || '' } onChange={handleChange} /> 
-
-                <div className="Btn">
-                <input type="submit" value="Save" />
-                <Link to="/"><input id="Cancel" type="submit" value="Cancel" /></Link>
                 </div>
+
+                <div className="Submit-Cancel">
+                <MDBBtn type="submit" color='success'>Save</MDBBtn>
+                
+                <Link to="/"><MDBBtn className='text-dark' color='light'>Cancel</MDBBtn></Link>
+                </div>
+
+                
                 
             </form>
         </div>

@@ -1,9 +1,16 @@
 .AddProduct {
+  margin: auto;
+  margin-top: 50px;
   width: 400px;
+  border: 2px solid rgb(243, 242, 242);
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
 }
 
-h3 {
-  margin-top: 20px;
+h1 {
+  font-size: 20px;
+  padding: 5px;
 }
 
 input[type=text],select, input[type=number] {
@@ -15,25 +22,43 @@ input[type=text],select, input[type=number] {
     border-radius: 4px;
     box-sizing: border-box;
   }
- 
-  
-  input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
+
+.AddProductForm {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+  #SubmitNewProduct {
+    margin-top: 10px;
+    text-align: center;
+    width: 30%;
+    border: 1px solid #969797;
+    border-radius: 5px;
+    background-color: #04AA6D;
+    color: #ffffff;
+    padding: 10px 10px;
     cursor: pointer;
   }
   
-  input[type=submit]:hover {
-    background-color: #45a049;
+  #SubmitNewProduct:hover {
+    margin-top: 10px;
+    border: 1px solid #969797;
+    border-radius: 5px;
+    background-color: #038656;
+    color: #ffffff;
+    padding: 10px 10px;
   }
   
-  div {
+  #SubmitNewProduct[disabled]{
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+    border: 1px solid #999999;
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    background-color: #cccccc;
+    color: #666666;
+    padding: 10px;
   }

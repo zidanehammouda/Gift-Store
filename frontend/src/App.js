@@ -1,21 +1,22 @@
 import './App.css';
-import Products from './components/Products/Products';
-import NewTask from './components/NewTask/NewTask';
-import EditProduct from './components/EditProduct/EditProduct';
 
-import Home from './pages/Home/Home';
-import PostProduct from './pages/PostProduct/PostProduct';
 
-import { BrowserRouter as Router, Switch, Route, Routes} from "react-router-dom";
+import HomePage from './pages/Home/HomePage';
+import PostProductPage from './pages/PostProduct/PostProductPage';
+import EditProductPage from './pages/EditProduct/EditProductPage';
+import NavBar from './components/NavBar/NavBar'
+
+import { BrowserRouter as Router,Route, Routes} from "react-router-dom";
 
 function App() {
   return (
-    
+ 
   <Router>
+     <NavBar/> 
     <Routes>
-      <Route exact path="/" element={<Products/>}/>
-      <Route path="/post" element={<NewTask/>}/>
-      <Route path="/edit" element={<EditProduct/>}/>
+      <Route exact path="/" element={<HomePage/>}/>
+      <Route path="/post" element={<PostProductPage/>}/>
+      <Route path="/edit" element={<EditProductPage/>}/>
     </Routes>
   </Router>
     

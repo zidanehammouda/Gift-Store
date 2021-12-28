@@ -2,7 +2,7 @@ import "./Products.css"
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import AddButton from "../AddButton/AddButton";
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
 
 
@@ -36,14 +36,14 @@ const Products = () => {
     }
 
     return (
-        <div className="Main">
-            <AddButton/>
+        <div className="MainProducts">
             <div className="Products">
             { 
             data.length !== 0 ? 
-                <table id="products">
+            <MDBTable hover>
+                <MDBTableHead>
                 <tr>
-                    <th>Id</th>
+                    <th>#</th>
                     <th>Name</th>
                     <th>Image</th>
                     <th>Category</th>
@@ -51,6 +51,8 @@ const Products = () => {
                     <th>Quantiy</th>
                     <th>Button</th>
                 </tr>
+                </MDBTableHead>
+                <MDBTableBody>
                 
                 {data.map((element)=> {
                 return (
@@ -65,17 +67,18 @@ const Products = () => {
                     <td>
                         <div className="EditDeleteButtons">
                         <Link to='/edit' state={{product: element}}>
-                        <button class="btn"><i class="fa fa-edit"></i></button>   
+                        <button class="Edit-Delete"><i class="fa fa-edit"></i></button>   
                         </Link>
-                        <button class="btn" onClick={() => handleClickDelete(element.id)}><i class="fa fa-close"></i></button>
+                        <button class="Edit-Delete" onClick={() => handleClickDelete(element.id)}><i class="fa fa-close"></i></button>
                         </div>
-                    
                     </td>
                     
                     </tr>
+        
                 )})}
-            </table> 
-            : <h1>You have no product</h1> 
+                </MDBTableBody>
+                   </MDBTable>
+            : <h1 className="NoProducts">You have no product</h1> 
         }
         
         </div>

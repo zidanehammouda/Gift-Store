@@ -32,7 +32,7 @@ module.exports = [
       'quantity': 99
     },
     {
-      'id': 8357,
+      'id': 5571,
       'name': 'Razer Viper Ultimate',
       'category': 'Electronics',
       'brand': 'Razer',

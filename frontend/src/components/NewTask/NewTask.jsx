@@ -1,11 +1,13 @@
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { MDBBtn } from 'mdb-react-ui-kit';
 import ('./NewTask.css')
 
 
 const NewTask = () => {
+    const navigate = useNavigate();
     const [data,setData] = useState({})
     const [categories,setCategories] = useState([])
     
@@ -16,40 +18,60 @@ const NewTask = () => {
             .then(response => {
                 console.log(response.data)
                 setCategories(response.data)})
+            
     },[]
     )
     
     const handleChange = ({target}) =>{
+        
         const {name,value} = target
         setData( (prevData)=> ({
             ...prevData,
             [name] : value
         }))
+        CheckInput(data)
+        
+        
     }
 
+    const CheckInput = () => {
+        if ( data.name === undefined || data.name==='' || 
+            data.category === undefined || data.category === '' ||
+            data.quantity === undefined || data.quantity === 0 ||
+            data.brand === undefined || data.brand === '' || 
+            data.image === undefined || data.image === ''
+            )
+            {return true}
+
+        else {return false}
+
+    }
+    
     const handleSubmit = (event) =>{
         event.preventDefault();
-        alert(JSON.stringify(data, '', 2));
         axios.post('http://localhost:8000/api/products',data)
             .then(response => console.log(response))
             .catch(error => console.log(error))
-
+            .then(setTimeout(()=>navigate("/"),1000))
     }
 
 
     return (
-        <div className="AddProduct">
-            <h3>Add Product</h3>
+        <div className="MainAddProduct">
             <Link to='/'><BsFillArrowLeftCircleFill id="GoBackButton"/></Link>
+            <div className="AddProduct shadow-4 ">
+            <h1 className="AddProductTitle">Add new product: </h1>
+            
             
             <form onSubmit={handleSubmit}>
-                
-
+        
+                <div className="AddProductForm">
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name ="name" value = { data.name || '' } onChange={handleChange}/>
 
                 <label htmlFor="category">Category</label>
                 <select name="category" id="categories" onChange={handleChange}>
+                    <option></option>
                     {
                     categories.map((element)=>
                     {
@@ -69,9 +91,15 @@ const NewTask = () => {
 
                 <label htmlFor="image">Image</label>
                 <input type="text" id="image" name ="image" value = { data.image || '' } onChange={handleChange} /> 
+                </div>
 
-                <input type="submit" value="Submit" />
+                
+                <MDBBtn disabled={CheckInput()} type="submit" value="Submit" color='success'>Save</MDBBtn>
+                
+                {/* <button id="SubmitNewProduct" disabled={CheckInput()} type="submit" value="Submit" >Save</button> */}
+                
             </form>
+            </div> 
         </div>
     )
 }
