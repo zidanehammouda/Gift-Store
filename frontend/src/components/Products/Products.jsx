@@ -43,13 +43,13 @@ const Products = () => {
             <MDBTable hover>
                 <MDBTableHead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Image</th>
-                    <th>Category</th>
-                    <th>Brand</th>
-                    <th>Quantiy</th>
-                    <th>Button</th>
+                    <th width="10%">#</th>
+                    <th width="20%">Name</th>
+                    <th width="20%">Image</th>
+                    <th width="10%">Category</th>
+                    <th width="10%">Brand</th>
+                    <th width="10%">Quantiy</th>
+                    <th width="20%">Button</th>
                 </tr>
                 </MDBTableHead>
                 <MDBTableBody>
@@ -60,7 +60,7 @@ const Products = () => {
                    <tr>
                     <td>{element.id}</td>
                     <td>{element.name}</td>
-                    <td><img width ="50px" height ="50px" src={element.image} alt={element.name}/></td>
+                    <td><img style={{textAlign : 'center'}} width ="50px" height ="50px" src={element.image} alt={element.name}/></td>
                     <td>{element.category}</td>
                     <td>{element.brand}</td>
                     <td>{element.quantity}</td>
