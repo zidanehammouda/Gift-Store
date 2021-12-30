@@ -96,7 +96,6 @@ const NewTask = () => {
                 
                 <MDBBtn disabled={CheckInput()} type="submit" value="Submit" color='success'>Save</MDBBtn>
                 
-                {/* <button id="SubmitNewProduct" disabled={CheckInput()} type="submit" value="Submit" >Save</button> */}
                 
             </form>
             </div> 
