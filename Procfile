@@ -1,1 +1,2 @@
-web: concurrently \" npm run server \" \" npm run client\"
+web: npm run server
+heroku ps:scale web=1
